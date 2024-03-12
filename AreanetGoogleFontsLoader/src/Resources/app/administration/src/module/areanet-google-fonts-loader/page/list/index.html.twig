@@ -1,0 +1,17 @@
+{% block an_googlepageloader_list %}
+    <sw-page class="areanet-google-fonts-loader-list">
+
+        {% block an_googlepageloader_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary" :routerLink="{ name: 'areanet-google-fonts-loader.create' }">
+                    {{ $tc('"areanet-google-fonts-loade.list.addButtonText') }}
+                </sw-button>
+            </template>
+        {% endblock %}
+
+        <template slot="content">
+            <h1>Test</h1>
+        </template>
+
+    </sw-page>
+{% endblock %}

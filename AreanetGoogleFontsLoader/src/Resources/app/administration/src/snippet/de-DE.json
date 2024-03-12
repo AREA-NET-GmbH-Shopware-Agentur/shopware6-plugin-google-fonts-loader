@@ -1,0 +1,11 @@
+{
+    "areanet-google-fonts-loader": {
+        "general": {
+            "mainMenuItemGeneral": "Google Fonts Loader",
+            "descriptionTextModule": "Google Fonts Loader"
+        },
+        "list": {
+            "addButtonText": "Google Font hinzufügen"
+        }
+    }
+}

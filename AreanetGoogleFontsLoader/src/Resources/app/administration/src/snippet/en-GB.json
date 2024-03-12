@@ -1,0 +1,11 @@
+{
+    "swag-example": {
+        "general": {
+            "mainMenuItemGeneral": "Google Fonts Loader",
+            "descriptionTextModule": "Google Fonts Loader"
+        },
+        "list": {
+            "addButtonText": "Add Google Font"
+        }
+    }
+}
