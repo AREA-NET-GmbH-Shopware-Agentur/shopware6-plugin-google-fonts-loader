@@ -5,7 +5,29 @@
             "descriptionTextModule": "Google Fonts Loader"
         },
         "list": {
-            "addButtonText": "Add Google Font"
+            "addButtonText": "Add Google Font",
+            "name": "Name",
+            "active": "Active",
+            "downloaded": "Downloaded",
+            "downloadedTrue": "Font downloaded locally",
+            "downloadedFalse": "Not downloaded",
+            "salesChannel": "Sales channel"
+        },
+        "detail": {
+            "cancelButtonText": "Cancel",
+            "saveButtonText": "Save",
+            "name": "Name",
+            "nameHelp": "Name of the font. To be found under <a href='https://fonts.google.com/' target='_blank'>https://fonts.google.com/</a> (e.g. Roboto)",
+            "active": "Active",
+            "salesChannel": "Available in"
+        },
+        "notification": {
+            "successTitle": "Success",
+            "success": "The Entry has been saved",
+            "errorTitle": "Error",
+            "noApiKey": "API key is missing in the plugin configuration",
+            "notFound": "Font not found",
+            "successDownload": "Font downloaded successfully"
         }
     }
 }

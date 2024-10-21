@@ -1,0 +1,47 @@
+{% block an_googlepageloader_detail %}
+    <sw-page class="areanet-google-fonts-loader-detail">
+        <template #smart-bar-actions>
+            <sw-button :routerLink="{ name: 'areanet.google.fonts.loader.list' }">
+                {{ $tc('areanet-google-fonts-loader.detail.cancelButtonText') }}
+            </sw-button>
+
+            <sw-button-process
+                    :isLoading="isLoading"
+                    :processSuccess="processSuccess"
+                    variant="primary"
+                    @process-finish="saveFinish"
+                    @click="onClickSave">
+                {{ $tc('areanet-google-fonts-loader.detail.saveButtonText') }}
+            </sw-button-process>
+        </template>
+        <template #content>
+            <sw-card-view>
+                <sw-card
+                    :v-if="font"
+                    :isLoading="isLoading"
+                    position-identifier="areanet-google-fonts-loader-form"
+                >
+                    <div class="areanet-google-fonts-loader-detail-general">
+                        <sw-text-field
+                            :label="$tc('areanet-google-fonts-loader.detail.name')"
+                            :helpText="$tc('areanet-google-fonts-loader.detail.nameHelp')"
+                             v-model:value="font.name">
+                        </sw-text-field>
+
+                        <google-font-sales-channel-select
+                                class="google_font-conditions__sales-channel-selection"
+                                :font="font"
+                                :entity-collection="font.salesChannels"
+                                :label="$tc('areanet-google-fonts-loader.detail.salesChannel')"
+                        />
+
+                        <sw-checkbox-field
+                            :label="$tc('areanet-google-fonts-loader.detail.active')"
+                            v-model:value="font.active">
+                        </sw-checkbox-field>
+                    </div>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

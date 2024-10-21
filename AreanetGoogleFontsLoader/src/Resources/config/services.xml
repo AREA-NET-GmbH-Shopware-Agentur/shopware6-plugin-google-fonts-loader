@@ -5,15 +5,26 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
         <service id="AreanetGoogleFontsLoader\Core\Content\GoogleFont\GoogleFontDefinition">
             <tag name="shopware.entity.definition" entity="areanet_google_font" />
         </service>
 
-        <service id="AreanetGoogleFontsLoader\Subscriber\ThemeCompilerSubscriber">
+        <service id="AreanetGoogleFontsLoader\Core\Content\GoogleFont\Aggregate\GoogleFontSalesChannel\GoogleFontSalesChannelDefinition">
+            <tag name="shopware.entity.definition" entity="areanet_google_font_sales_channel"/>
+        </service>
+
+        <service id="AreanetGoogleFontsLoader\Subscriber\FontLoaderSubscriber">
             <argument type="service" id="areanet_google_font.repository"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
+        <service id="AreanetGoogleFontsLoader\Controller\FontDownloadController" public="true">
+            <argument type="service" id="areanet_google_font.repository"/>
+            <tag name="controller.service_arguments"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
     </services>
 </container>

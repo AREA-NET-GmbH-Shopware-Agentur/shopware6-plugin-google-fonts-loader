@@ -1,23 +1,25 @@
-import template from './index.html.twig';
-
 const { Component, Mixin } = Shopware;
 const { Criteria } = Shopware.Data;
+
+import template from './index.html.twig';
 
 Component.register('areanet-google-fonts-loader-list', {
     template,
 
-    inject: [
-        'repositoryFactory'
-    ],
+    inject: ['repositoryFactory', 'acl'],
 
     mixins: [
-        Mixin.getByName('listing')
+        Mixin.getByName('notification'),
+        Mixin.getByName('listing'),
     ],
 
     data() {
         return {
-            repository: null,
-            vimeos: null
+            items: null,
+            isLoading: true,
+            sortBy: 'name',
+            sortDirection: 'ASC',
+            total: 0,
         };
     },
 
@@ -28,40 +30,56 @@ Component.register('areanet-google-fonts-loader-list', {
     },
 
     computed: {
-        columns() {
-            return this.getColumns();
-        }
-    },
+        fontRepository() {
+            return this.repositoryFactory.create('areanet_google_font');
+        },
 
-    created() {
-        this.createdComponent();
+        columns() {
+            return [
+                {
+                    property: 'name',
+                    dataIndex: 'name',
+                    label: this.$t('areanet-google-fonts-loader.list.name'),
+                    routerLink: 'areanet.google.fonts.loader.detail',
+                    allowResize: true
+                },
+                {
+                    property: 'active',
+                    dataIndex: 'active',
+                    label: this.$t('areanet-google-fonts-loader.list.active'),
+                    allowResize: true,
+                    inlineEdit: 'boolean',
+                },
+                {
+                    property: 'salesChannel',
+                    dataIndex: 'salesChannel',
+                    label: this.$t('areanet-google-fonts-loader.list.salesChannel')
+                },
+                {
+                    property: 'downloaded',
+                    dataIndex: 'downloaded',
+                    label: this.$t('areanet-google-fonts-loader.list.downloaded'),
+                    scopedSlots: {
+                        default: 'downloadedStatus'
+                    }
+                }
+            ];
+        }
     },
 
     methods: {
-        createdComponent() {
-            this.repository = this.repositoryFactory.create('areanet_google_fonts');
+        async getList() {
+            this.isLoading = true;
 
-            this.repository.search(new Criteria(), Shopware.Context.api).then(result => {
-                this.vimeos = result;
-            });
+            const criteria = new Criteria(this.page, this.limit);
+            criteria.addAssociation('salesChannels.salesChannel');
+
+            return this.fontRepository.search(criteria)
+                .then(result => {
+                    this.items = result;
+                    this.total = result.total;
+                    this.isLoading = false;
+                });
         },
-        getColumns() {
-            return[{
-                property: 'name',
-                label: this.$tc('an-vimeoondemand.list.columnName'),
-                routerLink: 'an.vimeoondemand.detail',
-                inlineEdit: 'string',
-                allowResize: true,
-                primary: true
-            }, {
-                property: 'embedCode',
-                label: this.$tc('an-vimeoondemand.list.columnEmbedCode'),
-                inlineEdit: 'string',
-                allowResize: true
-            }];
-        },
-        deleteVimeo() {
-            this.repository.delete(this.vimeo, Shopware.Context.api);
-        }
     }
 });

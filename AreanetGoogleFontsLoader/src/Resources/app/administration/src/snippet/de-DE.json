@@ -5,7 +5,29 @@
             "descriptionTextModule": "Google Fonts Loader"
         },
         "list": {
-            "addButtonText": "Google Font hinzufügen"
+            "addButtonText": "Google Font hinzufügen",
+            "name": "Name",
+            "active": "Aktiv",
+            "downloaded": "Heruntergeladen",
+            "downloadedTrue": "Schriftart lokal heruntergeladen",
+            "downloadedFalse": "Nicht heruntergeladen",
+            "salesChannel": "Verkaufskanäle"
+        },
+        "detail": {
+            "cancelButtonText": "Abbrechen",
+            "saveButtonText": "Speichern",
+            "name": "Name",
+            "nameHelp": "Name der Schriftart. Zu finden unter <a href='https://fonts.google.com/' target='_blank'>https://fonts.google.com/</a> (z.B. Roboto)",
+            "active": "Aktiv",
+            "salesChannel": "Verfügbar in"
+        },
+        "notification": {
+            "successTitle": "Erfolgreich",
+            "success": "Der Eintrag wurde gespeichert",
+            "errorTitle": "Fehler",
+            "noApiKey": "API Key fehlt in der Plugin-Konfiguration",
+            "notFound": "Schriftart nicht gefunden",
+            "successDownload": "Schriftart erfolgreich heruntergeladen"
         }
     }
 }

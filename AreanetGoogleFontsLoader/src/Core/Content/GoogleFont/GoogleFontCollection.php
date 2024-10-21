@@ -5,13 +5,7 @@ namespace AreanetGoogleFontsLoader\Core\Content\GoogleFont;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 /**
- * @method void add(GoogleFontEntity $entity)
- * @method void set(string $key, GoogleFontEntity $entity)
- * @method GoogleFontEntity[] getIterator()
- * @method GoogleFontEntity[] getElements()
- * @method GoogleFontEntity|null get(string $key)
- * @method GoogleFontEntity|null first()
- * @method GoogleFontEntity|null last()
+ * @extends EntityCollection<GoogleFontEntity>
  */
 class GoogleFontCollection extends EntityCollection
 {

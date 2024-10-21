@@ -4,6 +4,7 @@ namespace AreanetGoogleFontsLoader\Core\Content\GoogleFont;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
+use Shopware\Core\System\SalesChannel\SalesChannelCollection;
 
 class GoogleFontEntity extends Entity
 {
@@ -11,9 +12,16 @@ class GoogleFontEntity extends Entity
 
     protected ?string $name;
 
-    protected ?string $config;
+    protected bool $downloaded;
 
     protected bool $active;
+
+    protected string $css;
+
+    /**
+     * @var GoogleFontSalesChannelCollection|null
+     */
+    protected $salesChannels;
 
     public function getName(): ?string
     {
@@ -25,14 +33,14 @@ class GoogleFontEntity extends Entity
         $this->name = $name;
     }
 
-    public function getConfig(): ?string
+    public function isDownloaded(): bool
     {
-        return $this->config;
+        return $this->downloaded;
     }
 
-    public function setConfig(?string $config): void
+    public function setDownloaded(bool $downloaded): void
     {
-        $this->config = $config;
+        $this->downloaded = $downloaded;
     }
 
     public function isActive(): bool
@@ -43,5 +51,25 @@ class GoogleFontEntity extends Entity
     public function setActive(bool $active): void
     {
         $this->active = $active;
+    }
+
+    public function getSalesChannels(): ?GoogleFontSalesChannelCollection
+    {
+        return $this->salesChannels;
+    }
+
+    public function setSalesChannels(?GoogleFontSalesChannelCollection $salesChannels): void
+    {
+        $this->salesChannels = $salesChannels;
+    }
+
+    public function getCss(): string
+    {
+        return $this->css;
+    }
+
+    public function setCss(string $css): void
+    {
+        $this->css = $css;
     }
 }
