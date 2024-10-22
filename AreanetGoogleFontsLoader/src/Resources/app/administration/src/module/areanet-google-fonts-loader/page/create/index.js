@@ -18,7 +18,7 @@ Component.extend('areanet-google-fonts-loader-create', 'areanet-google-fonts-loa
                 .save(this.font, Shopware.Context.api)
                 .then(() => {
                     this.isLoading = false;
-                    this.loadFont();
+                    this.loadFont(this.font.id);
                     this.$router.push({name: 'areanet.google.fonts.loader.detail', params: {id: this.font.id}});
                 }).catch((exception) => {
                 this.isLoading = false;
