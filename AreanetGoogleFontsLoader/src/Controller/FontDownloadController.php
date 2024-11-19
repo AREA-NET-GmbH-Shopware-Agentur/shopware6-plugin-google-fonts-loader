@@ -3,9 +3,9 @@
 namespace AreanetGoogleFontsLoader\Controller;
 
 use Exception;
-use Shopware\Core\Framework\Api\Controller\ApiController;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -13,7 +13,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route(defaults: ['_routeScope' => ['api']])]
-class FontDownloadController extends ApiController {
+class FontDownloadController extends AbstractController {
     /**
      * @var EntityRepository
      */
