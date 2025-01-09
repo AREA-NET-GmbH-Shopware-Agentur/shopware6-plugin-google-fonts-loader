@@ -21,6 +21,19 @@ class api extends ApiService {
             return ApiService.handleResponse(response);
         });
     }
+
+    uploadZip(zip) {
+        const apiRoute = `${this.getApiBasePath()}/upload-zip`;
+
+        return this.httpClient.post(apiRoute, zip, {
+            headers: {
+                ...this.getBasicHeaders(),
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then((response) => {
+            return ApiService.handleResponse(response);
+        });
+    }
 }
 
 export default api;

@@ -1,11 +1,11 @@
 {
     "areanet-google-fonts-loader": {
         "general": {
-            "mainMenuItemGeneral": "Google Fonts Loader",
-            "descriptionTextModule": "Google Fonts Loader"
+            "mainMenuItemGeneral": "Fonts Loader",
+            "descriptionTextModule": "Fonts Loader"
         },
         "list": {
-            "addButtonText": "Google Font hinzufügen",
+            "addButtonText": "Font hinzufügen",
             "name": "Name",
             "active": "Aktiv",
             "downloaded": "Heruntergeladen",
@@ -16,7 +16,12 @@
         "detail": {
             "cancelButtonText": "Abbrechen",
             "saveButtonText": "Speichern",
+            "type": "Einbindungart",
             "name": "Name",
+            "zip": "ZIP",
+            "css": "CSS",
+            "selectGooglefonts": "Download von Google Fonts",
+            "selectZip": "Upload per ZIP",
             "nameHelp": "Name der Schriftart. Zu finden unter <a href='https://fonts.google.com/' target='_blank'>https://fonts.google.com/</a> (z.B. Roboto)",
             "active": "Aktiv",
             "salesChannel": "Verfügbar in"
@@ -27,7 +32,8 @@
             "errorTitle": "Fehler",
             "noApiKey": "API Key fehlt in der Plugin-Konfiguration",
             "notFound": "Schriftart nicht gefunden",
-            "successDownload": "Schriftart erfolgreich heruntergeladen"
+            "successDownload": "Schriftart erfolgreich heruntergeladen",
+            "zipfiles": "Folgende Dateien wurden auf dem Server angelegt:"
         }
     }
 }

@@ -22,11 +22,35 @@
                     position-identifier="areanet-google-fonts-loader-form"
                 >
                     <div class="areanet-google-fonts-loader-detail-general">
+                        <sw-select-field
+                                v-model:value="font.type"
+                                :label="$tc('areanet-google-fonts-loader.detail.type')"
+                        >
+                            <option value="googlefonts">{{ $tc('areanet-google-fonts-loader.detail.selectGooglefonts') }}</option>
+                            <option value="zip">{{ $tc('areanet-google-fonts-loader.detail.selectZip') }}</option>
+                        </sw-select-field>
+
                         <sw-text-field
                             :label="$tc('areanet-google-fonts-loader.detail.name')"
                             :helpText="$tc('areanet-google-fonts-loader.detail.nameHelp')"
                              v-model:value="font.name">
                         </sw-text-field>
+
+                        <sw-file-input
+                                v-if="font.type == 'zip'"
+                                v-model:value="font.zip"
+                                :label="$tc('areanet-google-fonts-loader.detail.zip')"
+                                :allowedMimeTypes="['application/zip']"
+                                class="zip-upload"
+                        >
+                        </sw-file-input>
+
+                        <sw-textarea-field
+                                v-if="font.type == 'zip'"
+                                type="textarea"
+                                v-model:value="font.css"
+                                :label="$tc('areanet-google-fonts-loader.detail.css')">
+                        </sw-textarea-field>
 
                         <google-font-sales-channel-select
                                 class="google_font-conditions__sales-channel-selection"

@@ -1,11 +1,11 @@
 {
     "swag-example": {
         "general": {
-            "mainMenuItemGeneral": "Google Fonts Loader",
-            "descriptionTextModule": "Google Fonts Loader"
+            "mainMenuItemGeneral": "Fonts Loader",
+            "descriptionTextModule": "Fonts Loader"
         },
         "list": {
-            "addButtonText": "Add Google Font",
+            "addButtonText": "Add Font",
             "name": "Name",
             "active": "Active",
             "downloaded": "Downloaded",
@@ -16,7 +16,12 @@
         "detail": {
             "cancelButtonText": "Cancel",
             "saveButtonText": "Save",
+            "type": "Type",
             "name": "Name",
+            "zip": "ZIP",
+            "css": "CSS",
+            "selectGooglefonts": "Download from Google Fonts",
+            "selectZip": "Upload via ZIP",
             "nameHelp": "Name of the font. To be found under <a href='https://fonts.google.com/' target='_blank'>https://fonts.google.com/</a> (e.g. Roboto)",
             "active": "Active",
             "salesChannel": "Available in"
@@ -27,7 +32,8 @@
             "errorTitle": "Error",
             "noApiKey": "API key is missing in the plugin configuration",
             "notFound": "Font not found",
-            "successDownload": "Font downloaded successfully"
+            "successDownload": "Font downloaded successfully",
+            "zipfiles": "The following files have been created on the server:"
         }
     }
 }

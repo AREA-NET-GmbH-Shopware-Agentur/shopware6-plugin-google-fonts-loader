@@ -18,6 +18,8 @@ class GoogleFontEntity extends Entity
 
     protected string $css;
 
+    protected ?string $type;
+
     /**
      * @var GoogleFontSalesChannelCollection|null
      */
@@ -71,5 +73,15 @@ class GoogleFontEntity extends Entity
     public function setCss(string $css): void
     {
         $this->css = $css;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 }

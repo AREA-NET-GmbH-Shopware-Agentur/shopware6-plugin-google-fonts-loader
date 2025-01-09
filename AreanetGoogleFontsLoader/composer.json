@@ -2,7 +2,7 @@
     "name": "areanet/google-fonts-loader",
     "description": "Google Fonts Loader",
     "type": "shopware-platform-plugin",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "license": "proprietary",
     "require": {
         "shopware/core": "6.6.*"
@@ -10,8 +10,8 @@
     "extra": {
         "shopware-plugin-class": "AreanetGoogleFontsLoader\\AreanetGoogleFontsLoader",
         "label": {
-            "de-DE": "Google Fonts Loader",
-            "en-GB": "Google Fonts Loader"
+            "de-DE": "Fonts Loader",
+            "en-GB": "Fonts Loader"
         },
         "manufacturerLink": {
             "de-DE": "www.area-net.de",

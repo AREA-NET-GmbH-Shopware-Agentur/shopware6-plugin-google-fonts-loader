@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Attribute\Route;
+use ZipArchive;
 
 #[Route(defaults: ['_routeScope' => ['api']])]
 class FontDownloadController extends AbstractController {
@@ -59,6 +60,49 @@ class FontDownloadController extends AbstractController {
 
             $data = [
                 'status' => 200,
+            ];
+        } catch (Exception $e) {
+            $data = [
+                'message' => $e->getMessage(),
+                'status' => 400,
+            ];
+        }
+
+        return new JsonResponse($data);
+    }
+
+    #[Route(path:'/api/_action/areanet-google-fonts/upload-zip', name: 'api.custom.upload-zip', methods: ['POST'])]
+    public function zipUpload(Request $request, Context $context): JsonResponse {
+        $file = $request->files->get('zip');
+
+        $path = "../custom/plugins/AreanetGoogleFontsLoader/src/Resources/public/fonts/";
+
+        try {
+            $zip = new ZipArchive();
+            $zip->open($file->getPathName());
+
+            if (!$zip->extractTo($path)) {
+                throw new \RuntimeException('Die ZIP-Datei konnte nicht entpackt werden.');
+            }
+
+            $extractedFiles = "";
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $fileInfo = $zip->statIndex($i);
+                $extractedFiles .= "<br>".$fileInfo['name'];
+            }
+
+            $zip->close();
+
+            $process = new Process([dirname(__DIR__, 5).'/bin/console', 'assets:install']);
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
+
+            $data = [
+                'status' => 200,
+                'message' => $extractedFiles
             ];
         } catch (Exception $e) {
             $data = [

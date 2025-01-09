@@ -40,6 +40,7 @@ class GoogleFontDefinition extends EntityDefinition
             (new StringField('name', 'name')),
             (new BoolField('downloaded', 'downloaded')),
             (new BoolField('active', 'active')),
+            (new StringField('type', 'type')),
             (new LongTextField('css', 'css')),
             (new OneToManyAssociationField('salesChannels', GoogleFontSalesChannelDefinition::class, 'areanet_google_font_id', 'id'))->addFlags(new CascadeDelete()),
         ]);

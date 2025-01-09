@@ -12,13 +12,22 @@ Component.extend('areanet-google-fonts-loader-create', 'areanet-google-fonts-loa
 
             this.font = entity;
         },
-        onClickSave() {
+        async onClickSave() {
+            if(this.font.type === "zip") {
+                if(await this.uploadZip()) {
+                    this.font.downloaded = true;
+                }
+            }
+
             this.isLoading = true;
             this.fontRepository
                 .save(this.font, Shopware.Context.api)
                 .then(() => {
                     this.isLoading = false;
-                    this.loadFont(this.font.id);
+
+                    if(this.font.type === "googlefonts") {
+                        this.loadFont(this.font.id);
+                    }
                     this.$router.push({name: 'areanet.google.fonts.loader.detail', params: {id: this.font.id}});
                 }).catch((exception) => {
                 this.isLoading = false;

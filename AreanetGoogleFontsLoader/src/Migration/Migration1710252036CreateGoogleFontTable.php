@@ -20,6 +20,7 @@ class Migration1710252036CreateGoogleFontTable extends MigrationStep
                 `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
                 `downloaded` TINYINT(1) COLLATE utf8mb4_unicode_ci,
                 `active` TINYINT(1) COLLATE utf8mb4_unicode_ci,
+                `type` VARCHAR(255) COLLATE utf8mb4_unicode_ci,
                 `css` LONGTEXT COLLATE utf8mb4_unicode_ci,
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3),

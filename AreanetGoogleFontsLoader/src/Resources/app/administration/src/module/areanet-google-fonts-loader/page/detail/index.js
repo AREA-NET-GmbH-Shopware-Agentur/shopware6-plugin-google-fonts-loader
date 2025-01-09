@@ -80,6 +80,19 @@ Component.register('areanet-google-fonts-loader-detail', {
                 this.getFont(),
             ]);
 
+            if (!this.font.type) {
+                this.font.type = 'googlefonts';
+            }
+
+            if (!this.font.css) {
+                this.font.css = "@font-face {\n" +
+                    "    font-family: '';\n" +
+                    "    font-style: normal;\n" +
+                    "    font-weight: 500;\n" +
+                    "    src: url('/bundles/areanetgooglefontsloader/fonts/dateiname.woff2') format('woff2');\n" +
+                    "}";
+            }
+
             this.isLoading = false;
         },
 
@@ -91,7 +104,13 @@ Component.register('areanet-google-fonts-loader-detail', {
                 });
         },
 
-        onClickSave() {
+        async onClickSave() {
+            if(this.font.type === "zip") {
+                if(await this.uploadZip()) {
+                    this.font.downloaded = true;
+                }
+            }
+
             this.isLoading = true;
             this.fontRepository
                 .save(this.font, Shopware.Context.api)
@@ -99,11 +118,14 @@ Component.register('areanet-google-fonts-loader-detail', {
                     this.getFont();
                     this.isLoading = false;
                     this.processSuccess = true;
-                    this.loadFont(this.font.id);
-                    this.createNotificationSuccess({
-                        title: this.$t('areanet-google-fonts-loader.notification.successTitle'),
-                        message: this.$tc('areanet-google-fonts-loader.notification.success')
-                    });
+
+                    if(this.font.type === "googlefonts") {
+                        this.loadFont(this.font.id);
+                        this.createNotificationSuccess({
+                            title: this.$t('areanet-google-fonts-loader.notification.successTitle'),
+                            message: this.$tc('areanet-google-fonts-loader.notification.success')
+                        });
+                    }
                 }).catch((exception) => {
                 this.isLoading = false;
                 this.createNotificationError({
@@ -198,6 +220,39 @@ Component.register('areanet-google-fonts-loader-detail', {
                     document.head.appendChild(script);
                 }
             }
+        },
+
+        async uploadZip() {
+            if(this.font.downloaded !== true) {
+                if (this.font.zip) {
+                    const formData = new FormData();
+                    formData.append('zip', this.font.zip);
+
+                    let notification = await this.customApiService.uploadZip(formData);
+
+                    if (notification.status === 200) {
+                        this.createNotificationSuccess({
+                            title: this.$t('areanet-google-fonts-loader.notification.successTitle'),
+                            message: this.$tc('areanet-google-fonts-loader.notification.successDownload')+"<br><br>"+this.$tc('areanet-google-fonts-loader.notification.zipfiles')+notification.message
+                        });
+
+                        return true;
+                    } else {
+                        this.createNotificationError({
+                            title: this.$t('areanet-google-fonts-loader.notification.errorTitle'),
+                            message: notification.message
+                        });
+                        return false;
+                    }
+                } else {
+                    this.createNotificationError({
+                        title: this.$t('areanet-google-fonts-loader.notification.errorTitle'),
+                        message: this.$t('areanet-google-fonts-loader.notification.notFound')
+                    });
+                    return false;
+                }
+            }
+            return false;
         }
     }
 });
