@@ -1,0 +1,8 @@
+build:
+  zip:
+    pack:
+      excludes:
+        paths:
+          - .idea
+          - images
+          - docs
