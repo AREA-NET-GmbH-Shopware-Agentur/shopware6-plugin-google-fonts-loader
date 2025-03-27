@@ -1,9 +1,10 @@
-# Shopware 6 Plugin: (Google) Web Fonts Loader
+# Shopware 6 Plugin: (Google) Webfonts Loader
 
 # Google Webfonts und eigene Webfonts datenschutzkonform (DSGVO) nutzen
 
-Ermöglicht das Laden von Google Fonts mit lokaler Speicherung auf dem Server direkt über die Google Fonts API oder Upload von Webfonts via ZIP-Archiv. 
-Die Webfonts können dann direkt in den Theme-Einstellungen oder über CSS verwendet werden.
+Ermöglicht das Laden von Google Webfonts mit lokaler Speicherung auf dem Server direkt über die Google Fonts API oder 
+Upload von eigenen Webfonts per ZIP-Archiv. Die Webfonts können dann direkt in den Theme-Einstellungen oder 
+über CSS verwendet werden.
 
 **Die Webfonts werden auf den eigenen Server geladen und sind somit datenschutzkonform nutzbar.**
 
