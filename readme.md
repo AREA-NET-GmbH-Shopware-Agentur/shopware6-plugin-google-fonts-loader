@@ -28,28 +28,26 @@ Download des entsprechenden ZIP-Files von der [Release-Seite](https://github.com
 
 ### Composer
 
-`composer require areanet/fixnettoprices`
+`composer require areanet/google-fonts-loader`
 
 # Dokumentation
 
 ## Google Webfonts laden
 
-### [Google API-Key](docs/google-api-key.md) in der Plugin-Konfiguration hinterlegen
+(1) Google [API-Key](docs/google-api-key.md) in der Pluginkonfiguration hinterlegen:
 
 ![01-api-key.png](images/01-api-key.png)
 
-### Google Webfont laden
-
-(1) Unter Inhalte->Fonts Loader eine neue "Font hinzufügen" und den Namen der Google Schriftart eintragen und die 
-gewünschten Verkaufskanäle auswählen, zu denen die Google Webfont hinzugefügt werden soll.
-
-![02-google-fonts.png](images/02-google-fonts.png)
-
-Den gewünschten Namen der Google Webfont erhalten Sie unter https://fonts.google.com/
+(2) Die gewünschte Google Webfont unter  https://fonts.google.com/ suchen und den Namen kopieren:
 
 ![google-font-name.png](images/google-font-name.png)
 
-(2) Die Webfont wird im Hintergrund auf den eigenen Server geladen werden und kann im Anschluss genutzt werden.
+(3) Unter _Inhalte->Fonts Loader_ eine neue _Font hinzufügen_, den Namen der Google Webfont eintragen und die 
+gewünschten Verkaufskanäle auswählen, zu denen die Google Webfont hinzugefügt werden soll:
+
+![02-google-fonts.png](images/02-google-fonts.png)
+
+(2) Die Webfont wird im Hintergrund auf den eigenen Server geladen werden und kann im Anschluss genutzt werden:
 
 ![03-google-webont.png](images/03-google-webont.png)
 
@@ -57,6 +55,7 @@ Den gewünschten Namen der Google Webfont erhalten Sie unter https://fonts.googl
 
 (1) Unter Inhalte->Fonts Loader eine neue "Font hinzufügen" und den Namen der  Schriftart eintragen, das entsprechende ZIP-File 
 und die gewünschten Verkaufskanäle auswählen, zu denen die  Webfont hinzugefügt werden soll.
+
 (2) Bei lokalen Webfonts müssen die entsprechenden CSS-Anweisungen angegeben werden. Das ZIP-File wird 1:1 auf den Server
 in das Verzeichnis _bundles/areanetgooglefontsloader/fonts/_ entpackt. Entsprechend müssen die Pfade zu den Webfonts korrekt
 (mit z.B. Unterordner) angegeben werden.
@@ -73,7 +72,7 @@ Beispiel:
 
 ![05-localfont.png](images/05-localfont.png)
 
-## Webfonts verwenden
+# Webfonts verwenden
 
 Nachdem die (Google) Webfonts geladen wurden, können sie in den Theme-Einstellungen oder direkt per CSS
 datenschutzkonform verwendet werden.
